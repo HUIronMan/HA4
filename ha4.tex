@@ -79,10 +79,114 @@ Schlägt der Funktionstest fehl, heißt das, dass das Produkt eine funktionale A
 
 \newpage
 \section*{Aufgabe 2}
-
+\subsection*{Bildung von gültigen und ungültigen Äquivalenzklassen:}
+\begin{tabular}{l|l|l}
+    Eingabe 	& gültige Äquivalenzklassen 							& ungültige Äquivalenzklassen\\
+    \hline
+    1. String 	& 1) String aus Buchstaben und/oder Ziffern, der		& 11) Kein String\\
+    			&    der gleiche String wie der 2. String ist 			& \\
+    			& 2) String aus Buchstaben und/oder Ziffern, der		& \\
+    			&    ein echter Substring von dem 2. String ist 		& \\
+    			& 3) String aus Buchstaben und/oder Ziffern, der		& \\
+    			&    kein Substring von dem 2. String ist				& \\
+    			& 4) String mit Sonderzeichen, der						& \\
+    			&    der gleiche String wie der 2. String ist 			& \\
+    			& 5) String mit Sonderzeichen, der	 					& \\
+    			&    ein echter Substring von dem 2. String ist 		& \\
+    			& 6) String mit Sonderzeichen, der	 					& \\
+    			&    kein Substring von dem 2. String ist				& \\
+    			& 7) Leerer String										& \\
+    			& 8) String mit Leerzeichen (vlt. auch Sonderzeichen),	& \\
+    			&    der der gleiche String wie der 2. String ist 		& \\
+    			& 9) String mit Leerzeichen (vlt. auch Sonderzeichen),	& \\
+    			&    der ein echter Substring von dem 2. String ist 	& \\
+    			& 10) String mit Leerzeichen (vlt. auch Sonderzeichen),& \\
+    			&    der kein Substring von dem 2. String ist			& \\
+    \hline
+    2. String 	& 12) String aus Buchstaben und/oder Ziffern, der		& 22) Kein String\\
+    			&    der gleiche String wie der 1. String ist 			& \\
+    			& 13) String aus Buchstaben und/oder Ziffern, der		& \\
+    			&    ein echter Substring von dem 1. String ist 		& \\
+    			& 14) String aus Buchstaben und/oder Ziffern, der		& \\
+    			&    kein Substring von dem 1. String ist				& \\
+    			& 15) String mit Sonderzeichen, der					& \\
+    			&    der gleiche String wie der 1. String ist 			& \\
+    			& 16) String mit Sonderzeichen, der	 				& \\
+    			&    ein echter Substring von dem 1. String ist 		& \\
+    			& 17) String mit Sonderzeichen, der	 				& \\
+    			&    kein Substring von dem 1. String ist				& \\
+    			& 18) Leerer String										& \\
+    			& 19) String mit Leerzeichen (vlt. auch Sonderzeichen),& \\
+    			&    der der gleiche String wie der 1. String ist 		& \\
+    			& 20) String mit Leerzeichen (vlt. auch Sonderzeichen),& \\
+    			&    der ein echter Substring von dem 1. String ist 	& \\
+    			& 21) String mit Leerzeichen (vlt. auch Sonderzeichen),& \\
+    			&    der kein Substring von dem 1. String ist			& \\
+\end{tabular} \\ \\
+\subsection*{Aquivalenzklassentestschema:}
+Strings sind hier der Übersichtlichkeit halber von Anführungszeichen umrandet.\\
+\begin{tabular}{l|l|ll|l}
+Testfall- 	& Getestete 		& Eingabe 1  	& Eingabe 2 	& Ergebnis/Kommentar\\
+nummer		& Äquivalenzklassen	& 				&				&\\
+\hline
+0.			& 1, 12				& $\glqq$0d3r$\grqq$		& $\glqq$0d3r$\grqq$		& Kein Substring\\
+1.			& 2, 14				& $\glqq$f5jk$\grqq$		& $\glqq$ghf5jk79$\grqq$	& 1. String ist ein Substring des 2.\\
+2.			& 2, 14				& $\glqq$allo$\grqq$		& $\glqq$hallo$\grqq$		& 1. String ist ein Substring des 2.\\
+3.			& 2, 14				& $\glqq$hall$\grqq$		& $\glqq$hallo$\grqq$		& 1. String ist ein Substring des 2.\\
+4.			& 2, 14				& $\glqq$a$\grqq$			& $\glqq$hallo$\grqq$		& 1. String ist ein Substring des 2.\\
+5.			& 2, 17				& $\glqq$allo$\grqq$		& $\glqq$\%hallo+$\grqq$	& 1. String ist ein Substring des 2.\\
+6.			& 2, 21				& $\glqq$Hallo$\grqq$		& $\glqq$Hallo Welt!$\grqq$& 1. String ist ein Substring des 2.\\
+7.			& 3, 13				& $\glqq$ghf5jk79$\grqq$	& $\glqq$hf5$\grqq$			& 2. String ist ein Substring des 1.\\
+8.			& 3, 14				& $\glqq$ghf5jk79$\grqq$	& $\glqq$796g$\grqq$		& Kein Substring\\
+9.			& 3, 17				& $\glqq$ghf5jk79$\grqq$	& $\glqq$hf5\&$\grqq$		& Kein Substring\\
+10.			& 3, 18				& $\glqq$ghf5jk79$\grqq$	& $\glqq \grqq$				& Kein Substring\\
+11.			& 3, 21				& $\glqq$ghf5jk79$\grqq$	& $\glqq$1 0h$\grqq$		& Kein Substring\\
+12.			& 3, 22				& $\glqq$ghf5jk79$\grqq$	& 42						& Falsche Eingabe\\
+13.			& 4, 15				& $\glqq$Hallo!$\grqq$		& $\glqq$Hallo!$\grqq$		& Kein Substring\\
+14.			& 5, 17				& $\glqq$Hallo!$\grqq$		& $\glqq$Hallo!!!$\grqq$	& 1. String ist ein Substring des 2.\\
+15.			& 5, 21				& $\glqq$!Hallo$\grqq$		& $\glqq$!Hallo Welt!$\grqq$& 1. String ist ein Substring des 2.\\
+16.			& 6, 13				& $\glqq$Hallo!$\grqq$		& $\glqq$Hallo$\grqq$		& 2. String ist ein Substring des 1.\\
+17.			& 6, 14				& $\glqq$Hallo!$\grqq$		& $\glqq$hallo0$\grqq$		& Kein Substring\\
+18.			& 6, 16				& $\glqq$Hallo,d$\grqq$		& $\glqq$Hallo,$\grqq$		& 2. String ist ein Substring des 1.\\
+19.			& 7, 17				& $\glqq \grqq$				& $\glqq$1\%$\grqq$			& Kein Substring\\
+20.			& 7, 22				& $\glqq \grqq$				& 1.56						& Falsche Eingabe\\
+21.			& 8, 19				& $\glqq$Hallo Welt!$\grqq$& $\glqq$Hallo Welt!$\grqq$& Kein Substring\\
+22.			& 9, 21				& $\glqq$Hallo $\grqq$		& $\glqq$Hallo Welt!$\grqq$& 1. String ist ein Substring des 2.\\
+23.			& 10, 20			& $\glqq$Hallo Welt!$\grqq$& $\glqq$Hallo $\grqq$		& 2. String ist ein Substring des 1.\\
+24.			& 11, 14			& 127						& $\glqq$127$\grqq$			& Falsche Eingabe\\
+25.			& 11, 22			& 1337						& 1337						& Falsche Eingabe\\
+\end{tabular} \\ \\
+Das sind 25 Tests. An sich können alle Tests auch für den Funktionstest verwendet werden, denn wenn sie fehlschlagen, dann stimmt irgendetwas an dem Programm nicht.
 \newpage
 \section*{Aufgabe 3}
+\subsection*{Äquivalenzklassen für den Modi ``Bearbeitung''}
+Gültige Äquivalenzklassen:
+Zeit positiv
+Distanz positiv
+Kosten numerisch
+2 unterschiedliche städte
 
+
+Ungültige Äquivalenzklassen:
+negative Zeit/Distanz
+alphabetische Zeit/Distanz/kosten
+ein wert nicht angegeben
+2 identische städte
+
+\subsection*{Tests für die Äquivalenzklassen des Modi ``Bearbeitung''}
+
+\subsection*{Äquivalenzklassen für den Modi ``Abfrage''}
+Gültige Äquivalenzklassen:
+wert bezüglich (zeit/distanz/kosten/agony) bekannt
+zwei equivalente routen möglich
+kürzeste route führt über alle anderen/eine weitere städte
+
+Ungültige Äquivalenzklassen:
+Start und zielort identisch
+Start oder zielort unbekannt
+es gibt keine verbindung zwischen start und zielort
+
+\subsection*{Tests für die Äquivalenzklassen des Modi ``Abfrage''}
 
 %\begin{lstlisting}
 %Put your code here.
