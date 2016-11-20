@@ -8,6 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{pdflscape}
 %\newcommand{\genasso}[2]{\begin{minipage}{0.7\textwidth}\begin{normalsize}\begin{flushleft}\textbf{{#1}}\end{flushleft}\end{normalsize}\vspace{-1cm}\begin{flushleft}\begin{small}{#2}\end{small}\end{flushleft}\end{minipage}\\\vspace{0.2cm}}
 \pagenumbering{arabic}
 
@@ -163,6 +164,7 @@ Es ergeben sich 25 Tests. Diese Tests können alle für den Funktionstest verwen
 \section*{Aufgabe 3}
 \subsection*{Äquivalenzklassen für den Modi ``Bearbeitung''}
 \begin{tabular}{|l|l|l|}
+\hline
     Eingabe 	& gültige Äquivalenzklassen 	& ungültige Äquivalenzklassen\\
     \hline
 Stadt 		& 1) Noch nicht im System 	& 2) Schon im System \\
@@ -189,52 +191,91 @@ Route Stadt 1/2 & 18) 2 Unterschiedliche Städte aus dem Sytstem & 19) Leer \\
 \hline
 \end{tabular}
 
-
+\begin{landscape}
 \subsection*{Tests für die Äquivalenzklassen des Modi ``Bearbeitung''}
-\begin{tabular}{l|l|l|l}
+\begin{tabular}{|l|l|l|l|}
+\hline
 Testfall- 	& Getestete 		& Eingaben 	& Ergebnis/Kommentar\\
-nummer		& Äquivalenzklassen	& 		&\\
+nummer		& Äquivalenzk.		& 		&\\
 \hline
 1 		& 1			& Berlin	& Erste Stadt im System \\
-2 		& 2			& Berlin	& Fehlermeldung Duplikat \\
-3 		& 3			& \glqq\ \grqq  & Fehlermeldung leerer String\\
-4 		& 4			& 1234		& Fehlermeldung ungültiger Wert \\
-5 		& 5, 10, 15, 18		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Erfolg, angenommen Die Städte sind im System\\
-6 		& 6, 10, 15, 18		& Zeit$=$-1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung negative Zeit\\
-7 		& 7, 10, 15, 18		& Zeit$=$0h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung Instantane Reise\\
-8 		& 8, 10, 15, 18		& Zeit$=$,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung Keine Zeit gegeben\\
-9 		& 9, 10, 15, 18		& Zeit$=$abc,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung falscher Zeitwert\\
-10 		& 5, 11, 15, 18		& Zeit$=$1h,Distanz$=$-1km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung negative Distanz\\
-11 		& 5, 12, 15, 18		& Zeit$=$1h,Distanz$=$0km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung Städte haben keinen Abstand\\
-12 		& 5, 13, 15, 18		& Zeit$=$1h,Distanz$=$,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung kein Städteabstand gegeben\\
-13 		& 5, 14, 15, 18		& Zeit$=$1h,Distanz$=$abc,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung falscher Abstandswert\\
-14 		& 5, 10, 16, 18		& Zeit$=$1h,Distanz$=$100km,Kosten$=$abc,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung falscher Preiswert\\
-15 		& 5, 10, 17, 18		& Zeit$=$1h,Distanz$=$100km,Kosten$=$,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung kein Preis gegeben\\
-16 		& 5, 10, 15, 19		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$,Stadt2$=$Bonn & Fehlermeldung ein oder beide Städte nicht angegeben (beides testen)\\
-17 		& 5, 10, 15, 20		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Düsseldorf & Fehlermeldung Start und Ziel identisch\\
-18 		& 5, 10, 15, 21		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Moon & Fehlermeldung eine oder beide Städte nicht im System\\
-19 		& 5, 10, 15, 22		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$123 & Fehlermeldung falscher Städtewert\\
-\end{tabular}
+2 		& 2			& Berlin	& Fehler Duplikat \\
+3 		& 3			& \glqq\ \grqq  & Fehler leerer String\\
+4 		& 4			& 1234		& Fehler ungültiger Wert \\
+5 		& 5, 10, 15, 18		& T$=$1,S$=$100,V$=$10,C1$=$Köln,C2$=$Bonn & Erfolg, angenommen Die Städte sind im System\\
+6 		& 6, 10, 15, 18		& T$=$-1,S$=$100,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler negative Zeit\\
+7 		& 7, 10, 15, 18		& T$=$0,S$=$100,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler Instantane Reise\\
+8 		& 8, 10, 15, 18		& T$=$,S$=$100,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler Keine Zeit gegeben\\
+9 		& 9, 10, 15, 18		& T$=$abc,S$=$100,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler falscher Zeitwert\\
+10 		& 5, 11, 15, 18		& T$=$1,S$=$-1,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler negative Distanz\\
+11 		& 5, 12, 15, 18		& T$=$1,S$=$0,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler Städte haben keinen Abstand\\
+12 		& 5, 13, 15, 18		& T$=$1,S$=$,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler kein Städteabstand gegeben\\
+13 		& 5, 14, 15, 18		& T$=$1,S$=$abc,V$=$10,C1$=$Köln,C2$=$Bonn & Fehler falscher Abstandswert\\
+14 		& 5, 10, 16, 18		& T$=$1,S$=$100,V$=$abc,C1$=$Köln,C2$=$Bonn & Fehler falscher Preiswert\\
+15 		& 5, 10, 17, 18		& T$=$1,S$=$100,V$=$,C1$=$Köln,C2$=$Bonn & Fehler kein Preis gegeben\\
+16 		& 5, 10, 15, 19		& T$=$1,S$=$100,V$=$10,C1$=$,C2$=$Bonn & Fehler ein oder beide Städte nicht angegeben (beides testen)\\
+17 		& 5, 10, 15, 20		& T$=$1,S$=$100,V$=$10,C1$=$Köln,C2$=$Köln & Fehler Start und Ziel identisch\\
+18 		& 5, 10, 15, 21		& T$=$1,S$=$100,V$=$10,C1$=$Köln,C2$=$Moon & Fehler eine oder beide Städte nicht im System\\
+19 		& 5, 10, 15, 22		& T$=$1,S$=$100,V$=$10,C1$=$Köln,C2$=$123 & Fehler falscher Städtewert\\ 
+\hline
+\end{tabular}\\
+T$=$Zeit\\
+S$=$Distanz\\
+V$=$Kosten\\
+C$=$Stadt\\
+F$=$Fehler\\
+\end{landscape}
 
 \subsection*{Äquivalenzklassen für den Modi ``Abfrage''}
+Alle folgenden Klassen gibt es für jede Abfrage (Zeit, Distanz, Kosten, Agony). Weiterhin wird angenommen die Abfragen sind so gestalltet, dass die Korrekte Antowrt bekannt ist bzw. das System expliziet für diese Abfrage gestaltet wurde.
 \begin{tabular}{|l|l|l|}
+\hline
     Eingabe 	& gültige Äquivalenzklassen 	& ungültige Äquivalenzklassen\\
     \hline
-wert bezüglich (zeit/distanz/kosten/agony) bekannt
-zwei equivalente routen möglich
-kürzeste route führt über alle anderen/eine weitere städte
+2 Städte 	& 1) Beide im System						& 4) Nicht im System \\
+		& 2) 2 oder Mehr routen möglich.				& 5) Start und Ziel identisch \\
+		& 3) Kürzeste Route führt über mehrere/alle 			& 6) Leere Abfrage \\
+		&    anderen Städte im System 					& 7) Es existiert keien Verbindung \\
+		&								& zwischen den Eingaben \\
+\hline    
+\end{tabular}
 
-Ungültige Äquivalenzklassen:
-Start und zielort identisch
-Start oder zielort unbekannt
-es gibt keine verbindung zwischen start und zielort
 
 \subsection*{Tests für die Äquivalenzklassen des Modi ``Abfrage''}
+Im folgenden wird angenommen es existiert ein System mit folgenden Städten:
+\begin{itemize}
+ \item Berlin
+ \item Bonn
+ \item Köln
+ \item Düsseldorf
+ \item New York
+\end{itemize}
+Als Agony wird der Einfachheit halber die Summe aus Zeit und Kosten verwendet. Das Produkt wäre jedoch realistischer.\\
+Weiterhin werden folgende verbindungen angenommen:
+\begin{enumerate}
+ \item Berlin - Bonn , 5h, 500 km, 5 Euro, Agony 10 
+ \item Berlin - Düsseldorf , 5h, 500 km, 5 Euro, Agony 10
+ \item Berlin - Köln , 4h, 400 km, 4 Euro, Agony 8
+ \item Köln - Bonn , 1h, 100 km, 1 Euro, Agony 2
+ \item Köln - Düsseldorf , 10h, 1000 km, 10 Euro, Agony 20
+ \end{enumerate}
 
-%\begin{lstlisting}
-%Put your code here.
-%\end{lstlisting}
 
+\begin{tabular}{|l|l|l|l|}
+\hline
+Testfall- 	& Getestete 		& Eingaben 	& Ergebnis/Kommentar\\
+nummer		& Äquivalenzk.		& 		&\\
+\hline
+1		& 1			& Köln - Bonn		& Take route 4 \\
+2		& 2, (3)		& Berlin - Bonn		& Take route 1 or (3 and 4)\\
+3		& 3			& Köln - Düsseldorf 	& Take route 3 and 2 \\
+4		& 4			& Bielefeld - Berlin 	& Fehler Bielefeld existiert nicht\\
+5		& 5			& Berlin - Berlin	& Fehler Start und Ziel identisch\\ 
+6		& 6			&  - Berlin		& Fehler leerer Startort\\
+7		& 7			& Berlin - New York	& Fehler es gibt keine Verbindung\\
+\hline
+\end{tabular}
+Im allgemeinen sollte dieser Test noch etwas ausfühlerlicher sein und z.B. Strecken mit $1-n$ routen testen, welche sich bei einem schlechten Programierstiel utnerschiedlich verhalten könnten. Angenommen es wird sich an die gängigsten und sinnvollsten Techniken gehalten, sollte dieser Test jedoch ausreichen. Insbesondere zum test der Wegfindung (möglicherweise stochastischer Algorithmus) sollten dynamische verschiedene Modelle erstellt werden mit bekannten Lösungen und getestet werden. Ein sollcher Test sollte jedoch ohne Hintergrundwissen über die Code Struktur des Projektes erstellt werden (blind test). 
 
 
 \end{document}
