@@ -157,28 +157,69 @@ nummer		& Äquivalenzklassen	& 				&				&\\
 25.			& 11, 22			& 1337						& 1337						& Falsche Eingabe\\
 \end{tabular} \\ \\
 %Das sind 25 Tests. An sich können alle Tests auch für den Funktionstest verwendet werden, denn wenn sie fehlschlagen, dann stimmt irgendetwas an dem Programm nicht.
-Es ergeben sich 25 Tests. Diese Tests können alle für den Funktionstest verwendet werden, da sie die funktionalität eines bestimmten Moduls testen. \\
+Es ergeben sich 25 Tests. Diese Tests können alle für den Funktionstest verwendet werden, da sie die Funktionalität eines bestimmten Moduls testen. \\
 
 \newpage
 \section*{Aufgabe 3}
 \subsection*{Äquivalenzklassen für den Modi ``Bearbeitung''}
-Gültige Äquivalenzklassen:
-Zeit positiv
-Distanz positiv
-Kosten numerisch
-2 unterschiedliche städte
+\begin{tabular}{|l|l|l|}
+    Eingabe 	& gültige Äquivalenzklassen 	& ungültige Äquivalenzklassen\\
+    \hline
+Stadt 		& 1) Noch nicht im System 	& 2) Schon im System \\
+		& 				& 3) Leerer Wert \\
+		& 				& 4) Numerischer Wert \\
+\hline
+Route Zeit 	& 5) $>0$ 			& 6) $<0$\\
+		&  				& 7) $0$\\
+		&  				& 8) Leer \\
+		& 				& 9) Alphabetisch \\
+\hline
+Route Distanz 	& 10) $>0$ 			& 11) $<0$\\
+		&  				& 12) $0$\\
+		&  				& 13) Leer \\
+		& 				& 14) Alphabetisch \\
+\hline
+Route Kosten 	& 15) Numerisch 		& 16) Alphabetisch \\
+		&  				& 17) Leer \\
+\hline
+Route Stadt 1/2 & 18) 2 Unterschiedliche Städte aus dem Sytstem & 19) Leer \\
+		&  						& 20) 2 Identische Städte\\
+		&  						& 21) Stadt nicht im System \\
+		&  						& 22) Numerischer Wert \\ 
+\hline
+\end{tabular}
 
-
-Ungültige Äquivalenzklassen:
-negative Zeit/Distanz
-alphabetische Zeit/Distanz/kosten
-ein wert nicht angegeben
-2 identische städte
 
 \subsection*{Tests für die Äquivalenzklassen des Modi ``Bearbeitung''}
+\begin{tabular}{l|l|l|l}
+Testfall- 	& Getestete 		& Eingaben 	& Ergebnis/Kommentar\\
+nummer		& Äquivalenzklassen	& 		&\\
+\hline
+1 		& 1			& Berlin	& Erste Stadt im System \\
+2 		& 2			& Berlin	& Fehlermeldung Duplikat \\
+3 		& 3			& \glqq\ \grqq  & Fehlermeldung leerer String\\
+4 		& 4			& 1234		& Fehlermeldung ungültiger Wert \\
+5 		& 5, 10, 15, 18		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Erfolg, angenommen Die Städte sind im System\\
+6 		& 6, 10, 15, 18		& Zeit$=$-1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung negative Zeit\\
+7 		& 7, 10, 15, 18		& Zeit$=$0h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung Instantane Reise\\
+8 		& 8, 10, 15, 18		& Zeit$=$,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung Keine Zeit gegeben\\
+9 		& 9, 10, 15, 18		& Zeit$=$abc,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung falscher Zeitwert\\
+10 		& 5, 11, 15, 18		& Zeit$=$1h,Distanz$=$-1km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung negative Distanz\\
+11 		& 5, 12, 15, 18		& Zeit$=$1h,Distanz$=$0km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung Städte haben keinen Abstand\\
+12 		& 5, 13, 15, 18		& Zeit$=$1h,Distanz$=$,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung kein Städteabstand gegeben\\
+13 		& 5, 14, 15, 18		& Zeit$=$1h,Distanz$=$abc,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung falscher Abstandswert\\
+14 		& 5, 10, 16, 18		& Zeit$=$1h,Distanz$=$100km,Kosten$=$abc,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung falscher Preiswert\\
+15 		& 5, 10, 17, 18		& Zeit$=$1h,Distanz$=$100km,Kosten$=$,Stadt1$=$Düsseldorf,Stadt2$=$Bonn & Fehlermeldung kein Preis gegeben\\
+16 		& 5, 10, 15, 19		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$,Stadt2$=$Bonn & Fehlermeldung ein oder beide Städte nicht angegeben (beides testen)\\
+17 		& 5, 10, 15, 20		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Düsseldorf & Fehlermeldung Start und Ziel identisch\\
+18 		& 5, 10, 15, 21		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$Moon & Fehlermeldung eine oder beide Städte nicht im System\\
+19 		& 5, 10, 15, 22		& Zeit$=$1h,Distanz$=$100km,Kosten$=$10Euro,Stadt1$=$Düsseldorf,Stadt2$=$123 & Fehlermeldung falscher Städtewert\\
+\end{tabular}
 
 \subsection*{Äquivalenzklassen für den Modi ``Abfrage''}
-Gültige Äquivalenzklassen:
+\begin{tabular}{|l|l|l|}
+    Eingabe 	& gültige Äquivalenzklassen 	& ungültige Äquivalenzklassen\\
+    \hline
 wert bezüglich (zeit/distanz/kosten/agony) bekannt
 zwei equivalente routen möglich
 kürzeste route führt über alle anderen/eine weitere städte
